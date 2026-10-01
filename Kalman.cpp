@@ -374,17 +374,6 @@ void setGroundPressureOverride(float pressurePa)
     P_ground = pressurePa;
 }
 
-// SUT senaryosu gercek MS5611 sicaklik verisi ICERMIYOR (SutSyntheticData'da
-// sicaklik alani yok - TestInterfaceUart.h). setGroundPressureOverride()
-// SADECE P_ground'u degistiriyordu, T_ground setup()'taki gercek donanim
-// olcumunde (ya da hic kalibrasyon olmadiysa varsayilan 288.15K'de) kalmaya
-// devam ediyordu. calculateISAAltitude() T_ground'u DOGRUDAN CARPAN olarak
-// kullandigindan (T_ground/LAPSE_RATE), bu uyumsuzluk SUT karsilastirmalarinda
-// yuzlerce/binlerce metrelik sabit bir irtifa offseti olarak gozlemlendi
-// (bkz. [SUT-CMP] loglarindaki sürekli ~1000-1100m diff). SUT senaryosu ISA
-// standart atmosferine gore uretildigi varsayimiyla, standart deniz seviyesi
-// sicakligina (288.15K = 15C) sifirliyoruz - gercek donanim sicakligini
-// degil, senaryonun kendi referans modelini esas aliyoruz.
 void setGroundTemperatureOverride(float tempKelvin)
 {
     T_ground = tempKelvin;
